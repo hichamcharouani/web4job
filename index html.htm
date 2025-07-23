@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hicham Charouani - Portfolio Personnel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 2rem 80px;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .cta-button {
+            background: #ffd700;
+            color: #333;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .personal-info {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .personal-info h3 {
+            margin-bottom: 1rem;
+        }
+
+        .info-item {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .languages, .hobbies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+
+        .tag {
+            background: rgba(255,255,255,0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Formation Section */
+        .formation-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .formation-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .formation-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .year {
+            background: #667eea;
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        /* Experience Section */
+        .experience-timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 1rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #667eea;
+        }
+
+        .experience-item {
+            position: relative;
+            margin-bottom: 3rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 2rem;
+            width: 12px;
+            height: 12px;
+            background: #667eea;
+            border-radius: 50%;
+        }
+
+        /* Competences Section */
+        .competences-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .competence-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .competence-category h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .skill-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                padding: 2rem;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .competences-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-timeline {
+                padding-left: 1rem;
+            }
+
+            .experience-item::before {
+                left: -1.5rem;
+            }
+
+            nav {
+                padding: 0 1rem;
+            }
+
+            section {
+                padding: 60px 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Hicham Charouani</div>
+            <ul class="nav-links">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#about">À propos</a></li>
+                <li><a href="#formation">Formation</a></li>
+                <li><a href="#experience">Expérience</a></li>
+                <li><a href="#competences">Compétences</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-toggle">☰</button>
+        </nav>
+    </header>
+
+    <section id="accueil" class="hero">
+        <div class="hero-content">
+            <h1>Hicham Charouani</h1>
+            <p>Expert en Gestion de l'Information Économico-Logistique | Spécialiste en Développement Web</p>
+            <button class="cta-button" onclick="document.getElementById('contact').scrollIntoView()">Me Contacter</button>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title fade-in">À Propos de Moi</h2>
+        <div class="about-content">
+            <div class="personal-info fade-in">
+                <h3>Informations Personnelles</h3>
+                <div class="info-item">
+                    <span>📅</span>
+                    <span>22/12/1989, Tinghir</span>
+                </div>
+                <div class="info-item">
+                    <span>🏠</span>
+                    <span>15 RUE SIDI MED BEN ABDELLAH AV BIR-RANZARAN TINGHIR 45800</span>
+                </div>
+                <div class="info-item">
+                    <span>📱</span>
+                    <span>0612476971</span>
+                </div>
+                <div class="info-item">
+                    <span>✉️</span>
+                    <span>hicharouani89@gmail.com</span>
+                </div>
+                <div class="info-item">
+                    <span>🗣️ Langues:</span>
+                </div>
+                <div class="languages">
+                    <span class="tag">Arabe</span>
+                    <span class="tag">Espagnol</span>
+                    <span class="tag">Français</span>
+                    <span class="tag">Tamazight</span>
+                    <span class="tag">Anglais</span>
+                </div>
+                <div class="info-item">
+                    <span>🎯 Loisirs:</span>
+                </div>
+                <div class="hobbies">
+                    <span class="tag">Natation</span>
+                    <span class="tag">Taekwondo</span>
+                    <span class="tag">Voyage</span>
+                    <span class="tag">Musique</span>
+                    <span class="tag">Montage</span>
+                </div>
+            </div>
+            <div class="fade-in">
+                <p style="font-size: 1.1rem; line-height: 1.8;">
+                    Professionnel expérimenté en gestion de l'information économico-logistique avec une expertise en développement web. 
+                    Depuis 2015, je contribue au secteur de l'éducation nationale en tant que professeur, tout en développant mes compétences 
+                    techniques dans les domaines de l'informatique et de la gestion. Mon parcours diversifié me permet d'allier compétences 
+                    pédagogiques et expertise technique pour répondre aux défis contemporains du secteur éducatif et technologique.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="formation">
+        <h2 class="section-title fade-in">Formation</h2>
+        <div class="formation-grid">
+            <div class="formation-item fade-in">
+                <div class="year">2025</div>
+                <h3>Certificat Front End Development Libraries</h3>
+                <p>Formation spécialisée en développement front-end avec les dernières technologies et frameworks.</p>
+            </div>
+            <div class="formation-item fade-in">
+                <div class="year">2025</div>
+                <h3>Responsive Web Design</h3>
+                <p>Maîtrise du design web responsive pour une expérience utilisateur optimale sur tous les appareils.</p>
+            </div>
+            <div class="formation-item fade-in">
+                <div class="year">2025</div>
+                <h3>Back End Development and APIs</h3>
+                <p>Développement d'applications back-end robustes et création d'APIs performantes.</p>
+            </div>
+            <div class="formation-item fade-in">
+                <div class="year">2023</div>
+                <h3>Master Management de l'Information Économico-Logistique (MIEL)</h3>
+                <p><strong>Université Mohamed 5 Agdal</strong></p>
+            </div>
+            <div class="formation-item fade-in">
+                <div class="year">2022</div>
+                <h3>Licence Gestion Territoriale et Développement Spatial</h3>
+                <p><strong>Université Moulay Ismail Faculté Polydisciplinaire Errachidia</strong></p>
+            </div>
+            <div class="formation-item fade-in">
+                <div class="year">2017-2018</div>
+                <h3>Affectation de la Gestion Administrative d'une École Primaire</h3>
+            </div>
+            <div class="formation-item fade-in">
+                <div class="year">2014-2015</div>
+                <h3>Centre Régional des Métiers de l'Education et de la Formation Meknès</h3>
+                <p>Diplôme Professeure à la Ministère de l'Education nationale.</p>
+            </div>
+            <div class="formation-item fade-in">
+                <div class="year">2012-2013</div>
+                <h3>Faculté des Sciences Juridiques Économiques et Social Marrakech</h3>
+                <p>Licence option Sciences Économiques et Gestion (FSJES)</p>
+            </div>
+            <div class="formation-item fade-in">
+                <div class="year">2010-2012</div>
+                <h3>Faculté des Sciences Juridiques Économiques et Social Marrakech</h3>
+                <p>Diplôme d'études universitaires DEUG</p>
+            </div>
+            <div class="formation-item fade-in">
+                <div class="year">2010</div>
+                <h3>Lycée Qualifiant SALAH EDDIN EL AYOUBI Tinghir</h3>
+                <p>Baccalauréat</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2 class="section-title fade-in">Expérience Professionnelle</h2>
+        <div class="experience-timeline">
+            <div class="experience-item fade-in">
+                <h3>Professeure à la Ministère de l'Education nationale</h3>
+                <p><strong>Depuis le 2 septembre 2015</strong></p>
+                <p>Enseignement et accompagnement pédagogique des élèves, développement de programmes éducatifs innovants.</p>
+            </div>
+            <div class="experience-item fade-in">
+                <h3>Enquêteur au Recensement Général de la Population et de l'Habitat</h3>
+                <p><strong>2014 et 2024</strong></p>
+                <p>Collecte et analyse des données démographiques pour les recensements nationaux.</p>
+            </div>
+            <div class="experience-item fade-in">
+                <h3>Stage au sein de Banque POPULAIRE</h3>
+                <p><strong>Mars à Avril 2012</strong></p>
+                <p>Charge de service administratif (création des comptes et opérations de caisse)</p>
+            </div>
+            <div class="experience-item fade-in">
+                <h3>Stages et Expériences Diverses</h3>
+                <p><strong>Juillet 2010 - Novembre 2011</strong></p>
+                <ul>
+                    <li>Encaisseur chez ONE, agent commercial d'assurance des Opérations de MONT GRAND</li>
+                    <li>Encaisseur chez ONEP et Opérateur de Canal MARRAKECH</li>
+                    <li>TRAVAIL PENDANT 8 MOIS CYBERCELLULAIRE NEYMAT BISENISSE A CASANÉARSHOR CENTRE DENWAKALI</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="competences">
+        <h2 class="section-title fade-in">Compétences</h2>
+        <div class="competences-grid">
+            <div class="competence-category fade-in">
+                <h3>💻 Informatique</h3>
+                <ul class="skill-list">
+                    <li>Word, Excel, PowerPoint</li>
+                    <li>Access, Publisher</li>
+                    <li>CIEL, SPHINX, SPSS</li>
+                </ul>
+            </div>
+            <div class="competence-category fade-in">
+                <h3>💼 Économie et Gestion</h3>
+                <ul class="skill-list">
+                    <li>Comptabilité Générale</li>
+                    <li>Comptabilité Analytique</li>
+                    <li>Finance des Entreprises</li>
+                    <li>Fiscalité des Entreprises MAROCAINES</li>
+                    <li>Mathématique Générale</li>
+                    <li>Analyse des données</li>
+                </ul>
+            </div>
+            <div class="competence-category fade-in">
+                <h3>🌐 Développement Web</h3>
+                <ul class="skill-list">
+                    <li>HTML5 & CSS3</li>
+                    <li>JavaScript (ES6+)</li>
+                    <li>Responsive Web Design</li>
+                    <li>Front-End Libraries</li>
+                    <li>Back-End Development</li>
+                    <li>APIs Development</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title fade-in">Contactez-Moi</h2>
+        <div class="contact-content">
+            <div class="contact-info fade-in">
+                <h3>Mes Coordonnées</h3>
+                <div class="contact-item">
+                    <span>📍</span>
+                    <div>
+                        <strong>Adresse</strong><br>
+                        15 RUE SIDI MED BEN ABDELLAH AV BIR-RANZARAN<br>
+                        TINGHIR 45800, Maroc
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span>📱</span>
+                    <div>
+                        <strong>Téléphone</strong><br>
+                        <a href="tel:+212612476971" style="color: white;">0612476971</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span>✉️</span>
+                    <div>
+                        <strong>Email</strong><br>
+                        <a href="mailto:hicharouani89@gmail.com" style="color: white;">hicharouani89@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form fade-in">
+                <h3>Envoyez-moi un Message</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Nom complet</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Sujet</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button">Envoyer le Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                const headerHeight = document.querySelector('header').offsetHeight;
+                const targetPosition = target.offsetTop - headerHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+
+                // Close mobile menu if open
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with fade-in class
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Contact form handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Create mailto link
+            const mailtoLink = `mailto:hicharouani89@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Nom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+            
+            window.location.href = mailtoLink;
+            
+            // Show success message
+            alert('Votre client de messagerie va s\'ouvrir avec le message pré-rempli !');
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Add active class to current navigation item
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            const headerHeight = document.querySelector('header').offsetHeight;
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - headerHeight - 100;
+                const sectionHeight = section.offsetHeight;
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.style.color = '';
+                if (link.getAttribute('href') === '#' + current) {
+                    link.style.color = '#ffd700';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
